@@ -12,7 +12,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'devise'
-
+gem 'websocket-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

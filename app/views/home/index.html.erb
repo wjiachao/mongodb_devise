@@ -1,63 +1,79 @@
 <html>
   <head>
+      <title>Web Socket Client</title>
   </head>
-  <body>
+  <body style="padding:10px;">
+     <h1>Web Socket Chating Room</h1>
+      <div style="margin:5px 0px;">
+        Name:
+        <div><input id="name" type="text" value="" style="width:400px;"/></div>
+      </div>
+      <div>
+        <button id="connect">connect server</button> &nbsp;&nbsp;
+        <button id="disconnect">disconnect</button>&nbsp;&nbsp;
+        <button id="clear">clear</button>
+      </div>
 
-    <div class="container">
-      <h1>WebSockets Chat App</h1>
-      
-      <button id='new-chat'>开始会话</button>
-      <button id='close-chat'>关闭会话</button>
-      <div id="chat-log"></div>
-    </div>
+      <h5 style="margin:4px 0px;">Message:</h5>
+        <div id="message" style="border:solid 1px #333; padding:4px; width:400px; overflow:auto;
+          background-color:#404040; height:300px; margin-bottom:8px; font-size:14px;">
+        </div>
+      <input id="text" type="text" style="width:340px"/> &nbsp;&nbsp;
+      <button id="send" onclick="send();">send</button>
+
+<!--       <div class="container">
+        
+        <button id='new-chat'>开始会话</button>
+        <button id='close-chat'>关闭会话</button>
+        <div id="chat-log"></div>
+      </div> -->
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
+      var user_name = $('#name').val();
+      var user_chat = $('#text').val();
+
       var chat = {
-        name: 'Start taking advantage of WebSockets',
-        completed: false
+        name: user_name,
+        content: user_chat
       };
 
-      var dispatcher = new WebSocketRails('localhost:3000/websocket');
+      $('#connect').on('click', function(){
+        var dispatcher = new WebSocketRails('localhost:3000/websocket');
 
-      dispatcher.on_open = function(data) {
-        console.log("Connection has been established");
-      };
+        dispatcher.on_open = function(data) {
+          console.log("Connection has been established");
+        };
 
-      $('#new-chat').on('click', function(){
-        dispatcher.trigger('chats.create', chat);
+        dispatcher.on_close = function(data){
+          var mess = $('<p>server has colsed</p>');
+          $('h5').append(mess);
+        };
+
       });
 
-      dispatcher.bind('chats.success', function(response) {
-        console.log("You are success because: " + response.name);
-        $('#chat-log').append('serverse response :' + response.name);
+      $('#disconnect').on('click', function(){
+        dispatcher.close();
       });
 
-      dispatcher.bind('chats.fail', function(response) {
-        console.log("You are failure because: " + response.name);
-        $('#chat-log').append('serverse response :' + response.name);
-      });
-
-
-      $('#close-chat').on('click', function(){
+      $('#clear').on('click', function(){
         dispatcher.trigger('chats.close', chat);
-      });      
+      });
 
-      // var success = function(response) {
-      //   console.log("You are success because: " + response.message);
-      // };
+      $('#send').on('click', function(){
+        dispatcher.trigger('chats.create', chat);
 
-      // var failure = function(response) {
-      //   console.log("You are failure because: " + response.message);
-      // };
+        dispatcher.bind('chats.success', function(response) {
+          console.log("You are success because: " + response.name);
+          $('#message').append(response.name + ':' + response.content);
+        });
 
-      // $('#create-chat').on('click', function(){
-      //   dispatcher.trigger('chats.update_chat', chat, success, failure); 
-      // });
-      
-      
-
+        dispatcher.bind('chats.fail', function(response) {
+          console.log("You are failure because: " + response.name);
+          $('#chat-log').append(response.name + ':' + response.content);
+        });
+      })
 
     </script>
   </body>

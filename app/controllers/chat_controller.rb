@@ -7,7 +7,6 @@ class ChatController < WebsocketRails::BaseController
   def create
     chat = Chat.new message
     if chat
-      chat.completed = true
       chat.save
       controller_store[:message_count] += 1
       send_message :success, chat, :namespace => :chats

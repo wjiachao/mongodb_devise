@@ -9,49 +9,35 @@
         <div><input id="name" type="text" value="" style="width:400px;"/></div>
       </div>
       <div>
-        <button id="connect">connect server</button> &nbsp;&nbsp;
         <button id="disconnect">disconnect</button>&nbsp;&nbsp;
         <button id="clear">clear</button>
       </div>
 
       <h5 style="margin:4px 0px;">Message:</h5>
         <div id="message" style="border:solid 1px #333; padding:4px; width:400px; overflow:auto;
-          background-color:#404040; height:300px; margin-bottom:8px; font-size:14px;">
+          background-color:transparent; height:300px; margin-bottom:8px; font-size:14px;">
         </div>
       <input id="text" type="text" style="width:340px"/> &nbsp;&nbsp;
-      <button id="send" onclick="send();">send</button>
+      <button id="send">send</button>
 
-<!--       <div class="container">
-        
-        <button id='new-chat'>开始会话</button>
-        <button id='close-chat'>关闭会话</button>
-        <div id="chat-log"></div>
-      </div> -->
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
-      var user_name = $('#name').val();
-      var user_chat = $('#text').val();
+   
+      var dispatcher = new WebSocketRails('localhost:3000/websocket');
 
-      var chat = {
-        name: user_name,
-        content: user_chat
+              
+      dispatcher.on_open = function(data) {
+        console.log("Connection has been established");
       };
 
-      $('#connect').on('click', function(){
-        var dispatcher = new WebSocketRails('localhost:3000/websocket');
+      dispatcher.on_close = function(data){
+        var mess = $('<p>server has colsed</p>');
+        $('h5').append(mess);
+      };
 
-        dispatcher.on_open = function(data) {
-          console.log("Connection has been established");
-        };
-
-        dispatcher.on_close = function(data){
-          var mess = $('<p>server has colsed</p>');
-          $('h5').append(mess);
-        };
-
-      });
+     
 
       $('#disconnect').on('click', function(){
         dispatcher.close();
@@ -62,6 +48,11 @@
       });
 
       $('#send').on('click', function(){
+        var chat = {
+          name: $('#name').val(),
+          content: $('#text').val()
+        };
+
         dispatcher.trigger('chats.create', chat);
 
         dispatcher.bind('chats.success', function(response) {
@@ -73,7 +64,9 @@
           console.log("You are failure because: " + response.name);
           $('#chat-log').append(response.name + ':' + response.content);
         });
-      })
+      });
+
+      
 
     </script>
   </body>

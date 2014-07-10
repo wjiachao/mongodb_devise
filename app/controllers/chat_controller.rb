@@ -6,14 +6,14 @@ class ChatController < WebsocketRails::BaseController
 
   def create
     chat = Chat.new message
-    if chat.save
-      send_message :create_success, chat, :namespace => :chat
+    if chat
+      chat.completed = true
+      chat.save
+      controller_store[:message_count] += 1
+      send_message :success, chat, :namespace => :chats
     else
-      send_message :create_fail, chat, :namespace => :chat
+      send_message :fail, chat, :namespace => :chats
     end
   end
 
-  def update_chat
-    puts message if message[:date] == 'test'
-  end
 end

@@ -5,9 +5,10 @@
 
     <div class="container">
       <h1>WebSockets Chat App</h1>
+      
+      <button id='new-chat'>创建会话</button>
       <div id="chat-log"></div>
     </div>
-
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -15,26 +16,42 @@
       var chat = {
         name: 'Start taking advantage of WebSockets',
         completed: false
-      }
+      };
 
       var dispatcher = new WebSocketRails('localhost:3000/websocket');
 
-      dispatcher.trigger('chats.create', chat);
+      dispatcher.on_open = function(data) {
+        console.log("Connection has been established");
+      };
 
-      dispatcher.bind('chats.create', function(chat) {
-        console.log('successfully created ' + chat.name);
+      $('#new-chat').on('click', function(){
+        dispatcher.trigger('chats.create', chat);
       });
 
-      var success = function(response) {
-        console.log("You are success because: "+response.message);
-      }
+      dispatcher.bind('chats.success', function(response) {
+        console.log("You are success because: " + response.name);
+        $('#chat-log').append('serverse response :' + response.name);
+      });
 
-      var failure = function(response) {
-        console.log("You are failure because: "+response.message);
-      }
+      dispatcher.bind('chats.fail', function(response) {
+        console.log("You are failure because: " + response.name);
+        $('#chat-log').append('serverse response :' + response.name);
+      });
 
-      var message = { date: 'test'}
-      dispatcher.trigger('update_chat', message, success, failure); 
+      // var success = function(response) {
+      //   console.log("You are success because: " + response.message);
+      // };
+
+      // var failure = function(response) {
+      //   console.log("You are failure because: " + response.message);
+      // };
+
+      // $('#create-chat').on('click', function(){
+      //   dispatcher.trigger('chats.update_chat', chat, success, failure); 
+      // });
+      
+      
+
 
     </script>
   </body>

@@ -1,19 +1,19 @@
 class ChatController < WebsocketRails::BaseController
   def initialize_session
     # perform application setup here
-    @chat = 0
+    controller_store[:message_count] = 0
   end
 
   def create
     chat = Chat.new message
     if chat.save
-      trigger_success {:message => 'i get the message!'}
+      send_message :create_success, chat, :namespace => :chat
     else
-      trigger_failure {:message => 'i can not get the message!'}
+      send_message :create_fail, chat, :namespace => :chat
     end
   end
 
   def update_chat
-    puts message
+    puts message if message[:date] == 'test'
   end
 end

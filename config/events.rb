@@ -1,4 +1,15 @@
 WebsocketRails::EventMap.describe do
+  namespace :chats do
+
+    # using a Hash to specify the target
+    subscribe :create, :to => ChatController, :with_method => :create
+
+    subscribe :update_chat, :to => ChatController, :with_method => :update_chat
+    
+
+    # using the same syntax as routes.rb
+    
+  end
   # You can use this file to map incoming events to controller actions.
   # One event can be mapped to any number of controller actions. The
   # actions will be executed in the order they were subscribed.

@@ -1,0 +1,41 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>WebSockets Chat App</h1>
+      <div id="chat-log"></div>
+    </div>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      var chat = {
+        name: 'Start taking advantage of WebSockets',
+        completed: false
+      }
+
+      var dispatcher = new WebSocketRails('localhost:3000/websocket');
+
+      dispatcher.trigger('chats.create', chat);
+
+      dispatcher.bind('chats.create', function(chat) {
+        console.log('successfully created ' + chat.name);
+      });
+
+      var success = function(response) {
+        console.log("You are success because: "+response.message);
+      }
+
+      var failure = function(response) {
+        console.log("You are failure because: "+response.message);
+      }
+
+      var message = { awesomeness: 4 }
+      dispatcher.trigger('update_chat', message, success, failure); 
+
+    </script>
+  </body>
+</html>

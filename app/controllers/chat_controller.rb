@@ -16,4 +16,8 @@ class ChatController < WebsocketRails::BaseController
     end
   end
 
+  def close
+    Chat.delete_all
+  end
+
 end

@@ -2403,3 +2403,152 @@ Started GET "/websocket" for 127.0.0.1 at 2014-07-10 16:32:05 +0800
   MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} runtime: 0.5130ms
   MOPED: 127.0.0.1:27017 INSERT       database=mongodb_app_development collection=chats documents=[{"_id"=>BSON::ObjectId('53be4f8664616e1b190d0000'), "name"=>"Start taking advantage of WebSockets", "completed"=>true}] flags=[]
                          COMMAND      database=mongodb_app_development command={:getlasterror=>1, :w=>1} runtime: 0.5740ms
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-10 16:40:07 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 229ms (Views: 212.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/websocket_rails/websocket_rails.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/websocket_rails/event.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/websocket_rails/abstract_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/websocket_rails/http_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/websocket_rails/websocket_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/websocket_rails/channel.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/websocket_rails/main.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+
+
+Started GET "/websocket" for 127.0.0.1 at 2014-07-10 16:40:08 +0800
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} runtime: 0.9710ms
+  MOPED: 127.0.0.1:27017 INSERT       database=mongodb_app_development collection=chats documents=[{"_id"=>BSON::ObjectId('53be516964616e1bd4000000'), "name"=>"Start taking advantage of WebSockets", "completed"=>true}] flags=[]
+                         COMMAND      database=mongodb_app_development command={:getlasterror=>1, :w=>1} runtime: 0.4570ms
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 9ms (Views: 7.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/websocket_rails/websocket_rails.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/websocket_rails/event.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/websocket_rails/abstract_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/websocket_rails/http_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/websocket_rails/websocket_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/websocket_rails/channel.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/websocket_rails/main.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-10 16:40:11 +0800
+
+
+Started GET "/websocket" for 127.0.0.1 at 2014-07-10 16:40:13 +0800
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} runtime: 0.5120ms
+  MOPED: 127.0.0.1:27017 INSERT       database=mongodb_app_development collection=chats documents=[{"_id"=>BSON::ObjectId('53be516f64616e1bd4010000'), "name"=>"Start taking advantage of WebSockets", "completed"=>true}] flags=[]
+                         COMMAND      database=mongodb_app_development command={:getlasterror=>1, :w=>1} runtime: 0.5280ms
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 96ms (Views: 76.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/websocket_rails/websocket_rails.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/websocket_rails/event.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/websocket_rails/abstract_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/websocket_rails/http_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/websocket_rails/websocket_connection.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/websocket_rails/channel.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/websocket_rails/main.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+
+
+Started GET "/websocket" for 127.0.0.1 at 2014-07-10 16:47:47 +0800
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} runtime: 0.8380ms
+  MOPED: 127.0.0.1:27017 COMMAND      database=mongodb_app_development command={:count=>"chats", :query=>{}} runtime: 0.2900ms
+  MOPED: 127.0.0.1:27017 DELETE       database=mongodb_app_development collection=chats selector={} flags=[]
+                         COMMAND      database=mongodb_app_development command={:getlasterror=>1, :w=>1} runtime: 0.6110ms
+  MOPED: 127.0.0.1:27017 COMMAND      database=admin command={:ismaster=>1} runtime: 0.5120ms
+  MOPED: 127.0.0.1:27017 COMMAND      database=mongodb_app_development command={:count=>"chats", :query=>{}} runtime: 0.3540ms
+  MOPED: 127.0.0.1:27017 DELETE       database=mongodb_app_development collection=chats selector={} flags=[]
+                         COMMAND      database=mongodb_app_development command={:getlasterror=>1, :w=>1} runtime: 0.3090ms

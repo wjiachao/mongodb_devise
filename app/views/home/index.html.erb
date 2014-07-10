@@ -6,7 +6,8 @@
     <div class="container">
       <h1>WebSockets Chat App</h1>
       
-      <button id='new-chat'>创建会话</button>
+      <button id='new-chat'>开始会话</button>
+      <button id='close-chat'>关闭会话</button>
       <div id="chat-log"></div>
     </div>
 
@@ -37,6 +38,11 @@
         console.log("You are failure because: " + response.name);
         $('#chat-log').append('serverse response :' + response.name);
       });
+
+
+      $('#close-chat').on('click', function(){
+        dispatcher.trigger('chats.close', chat);
+      });      
 
       // var success = function(response) {
       //   console.log("You are success because: " + response.message);

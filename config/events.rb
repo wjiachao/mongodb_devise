@@ -4,7 +4,7 @@ WebsocketRails::EventMap.describe do
     # using a Hash to specify the target
     subscribe :create, :to => ChatController, :with_method => :create
 
-    subscribe :update_chat, :to => ChatController, :with_method => :update_chat
+    subscribe :close, :to => ChatController, :with_method => :close
     
 
     # using the same syntax as routes.rb

@@ -44,24 +44,20 @@
           content: $('#text').val()
         };   
         dispatcher.trigger('chats.create', chat);
-
-        channel.bind('new', function(response) {
-          console.log("You are success because: " + response.name);
-          $('#message').append(response.name + ':' + response.content + '</br>');
-        });
-
-        // dispatcher.bind('chats.success', function(response) {
-        //   console.log("You are success because: " + response.name);
-        //   $('#message').append(response.name + ':' + response.content);
-        // });
-
-        // dispatcher.bind('chats.fail', function(response) {
-        //   console.log("You are failure because: " + response.name);
-        //   $('#chat-log').append(response.name + ':' + response.content);
-        // });
       });
 
-     
+
+      dispatcher.bind('chats.success', function(response) {
+        console.log("You are success because: " + response.name);
+      });
+
+      dispatcher.bind('chats.fail', function(response) {
+        console.log("You are failure");
+      });
+      
+      channel.bind('new', function(response) {
+        $('#message').append(response.name + ':' + response.content + '</br>');
+      });
 
       $('#disconnect').on('click', function(){
         dispatcher.close();
@@ -71,9 +67,6 @@
         dispatcher.trigger('chats.close', 'clear');
         $('#message').empty();
       });
-
-      
-      
 
     </script>
   </body>

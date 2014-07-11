@@ -26,8 +26,8 @@
     <script>
    
       var dispatcher = new WebSocketRails('localhost:3000/websocket');
-      var channel = dispatcher.subscribe('chats');
-              
+      var channel = dispatcher.subscribe('talk');
+          
       dispatcher.on_open = function(data) {
         console.log("Connection has been established");
       };
@@ -37,6 +37,30 @@
         $('h5').append(mess);
       };
 
+      $('#send').on('click', function(){
+
+        var chat = {
+          name: $('#name').val(),
+          content: $('#text').val()
+        };   
+        dispatcher.trigger('chats.create', chat);
+
+        channel.bind('new', function(response) {
+          console.log("You are success because: " + response.name);
+          $('#message').append(response.name + ':' + response.content + '</br>');
+        });
+
+        // dispatcher.bind('chats.success', function(response) {
+        //   console.log("You are success because: " + response.name);
+        //   $('#message').append(response.name + ':' + response.content);
+        // });
+
+        // dispatcher.bind('chats.fail', function(response) {
+        //   console.log("You are failure because: " + response.name);
+        //   $('#chat-log').append(response.name + ':' + response.content);
+        // });
+      });
+
      
 
       $('#disconnect').on('click', function(){
@@ -44,33 +68,11 @@
       });
 
       $('#clear').on('click', function(){
-        dispatcher.trigger('chats.close', chat);
+        dispatcher.trigger('chats.close', 'clear');
+        $('#message').empty();
       });
 
-      $('#send').on('click', function(){
-        var chat = {
-          name: $('#name').val(),
-          content: $('#text').val()
-        };
-        channel.trigger('create', chat);
-
-        channel.bind('create', function(response) {
-          console.log("You are success because: " + response.name);
-          $('#message').append(response.name + ':' + response.content + '</br>');
-        });
-        //dispatcher.trigger('chats.create', chat);
-
-        // channel.bind('chats.success', function(response) {
-        //   console.log("You are success because: " + response.name);
-        //   $('#message').append(response.name + ':' + response.content);
-        // });
-
-        // channel.bind('chats.fail', function(response) {
-        //   console.log("You are failure because: " + response.name);
-        //   $('#chat-log').append(response.name + ':' + response.content);
-        // });
-      });
-
+      
       
 
     </script>

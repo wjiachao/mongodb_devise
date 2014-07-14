@@ -37,6 +37,10 @@
         $('h5').append(mess);
       };
 
+      dispatcher.on_error = function(data){
+        console.log(data);
+      };
+
       $('#send').on('click', function(){
 
         var chat = {
